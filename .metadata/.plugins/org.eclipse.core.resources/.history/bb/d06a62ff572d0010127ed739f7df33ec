@@ -1,0 +1,428 @@
+UseCaseModel Video {
+
+	UC::login definedBySSD(LoginSSD) relatedService(LoginService)
+	UC::register definedBySSD(RegisterSSD) relatedService(RegisterService)
+	UC::watchVideo extend likeVideo, commentVideo definedBySSD(WatchVideoSSD) relatedService(WatchVideoService)
+	UC::likeVideo definedBySSD(LikeVideoSSD) relatedService(LikeVideoService)
+	UC::commentVideo definedBySSD(CommentVideoSSD) relatedService(CommentVideoService)
+	UC::manageVideo include uploadVideo, updateVideo definedBySSD(ManageVideoSSD) relatedService(ManageVideoService)
+	UC::uploadVideo definedBySSD(UploadVideoSSD) relatedService(UploadVideoService)
+	UC::updateVideo definedBySSD(UpdateVideoSSD) relatedService(UpdateVideoService)
+
+	Actor Viewer {
+		login
+		register
+	}
+
+	Actor Poster {
+		watchVideo
+		manageVideo
+	}
+
+	Interaction LoginSSD {
+
+		[Participants: Viewer LoginService]
+
+		CallMessage::LoginSSDCallMessage1(login LoginSSDCallMessage1SendingEnd -> LoginSSDExecution1StartEnd)
+		ReturnMessage::LoginSSDCallMessage1Return(LoginSSDExecution1FinishEnd -> LoginSSDCallMessage1ReturnReceivingEnd LoginSSDCallMessage1)
+
+		Execution::LoginSSDExecution1(LoginService LoginSSDExecution1StartEnd LoginSSDExecution1FinishEnd)
+
+		MessageEnd::LoginSSDCallMessage1SendingEnd(Viewer LoginSSDCallMessage1)
+		ExecutionEnd::LoginSSDExecution1StartEnd(LoginService LoginSSDExecution1)
+		ExecutionEnd::LoginSSDExecution1FinishEnd(LoginService LoginSSDExecution1)
+		MessageEnd::LoginSSDCallMessage1ReturnReceivingEnd(Viewer LoginSSDCallMessage1Return)
+
+	}
+
+	Interaction RegisterSSD {
+
+		[Participants: Viewer RegisterService]
+
+		CallMessage::RegisterSSDCallMessage1(register RegisterSSDCallMessage1SendingEnd -> RegisterSSDExecution1StartEnd)
+		ReturnMessage::RegisterSSDCallMessage1Return(RegisterSSDExecution1FinishEnd -> RegisterSSDCallMessage1ReturnReceivingEnd RegisterSSDCallMessage1)
+
+		Execution::RegisterSSDExecution1(RegisterService RegisterSSDExecution1StartEnd RegisterSSDExecution1FinishEnd)
+
+		MessageEnd::RegisterSSDCallMessage1SendingEnd(Viewer RegisterSSDCallMessage1)
+		ExecutionEnd::RegisterSSDExecution1StartEnd(RegisterService RegisterSSDExecution1)
+		ExecutionEnd::RegisterSSDExecution1FinishEnd(RegisterService RegisterSSDExecution1)
+		MessageEnd::RegisterSSDCallMessage1ReturnReceivingEnd(Viewer RegisterSSDCallMessage1Return)
+
+	}
+
+	Interaction WatchVideoSSD {
+
+		[Participants: Viewer Poster WatchVideoService]
+
+		CallMessage::WatchVideoSSDCallMessage1(getVideoList WatchVideoSSDCallMessage1SendingEnd -> WatchVideoSSDExecution1StartEnd)
+		ReturnMessage::WatchVideoSSDCallMessage1Return(WatchVideoSSDExecution1FinishEnd -> WatchVideoSSDCallMessage1ReturnReceivingEnd WatchVideoSSDCallMessage1)
+		CallMessage::WatchVideoSSDCallMessage3(getLowVideoList WatchVideoSSDCallMessage3SendingEnd -> WatchVideoSSDExecution2StartEnd)
+		ReturnMessage::WatchVideoSSDCallMessage3Return(WatchVideoSSDExecution2FinishEnd -> WatchVideoSSDCallMessage3ReturnReceivingEnd WatchVideoSSDCallMessage3)
+		CallMessage::WatchVideoSSDCallMessage5(getLikedVideoList WatchVideoSSDCallMessage5SendingEnd -> WatchVideoSSDExecution3StartEnd)
+		ReturnMessage::WatchVideoSSDCallMessage5Return(WatchVideoSSDExecution3FinishEnd -> WatchVideoSSDCallMessage5ReturnReceivingEnd WatchVideoSSDCallMessage5)
+
+		Execution::WatchVideoSSDExecution1(WatchVideoService WatchVideoSSDExecution1StartEnd WatchVideoSSDExecution1FinishEnd)
+		Execution::WatchVideoSSDExecution2(WatchVideoService WatchVideoSSDExecution2StartEnd WatchVideoSSDExecution2FinishEnd)
+		Execution::WatchVideoSSDExecution3(WatchVideoService WatchVideoSSDExecution3StartEnd WatchVideoSSDExecution3FinishEnd)
+
+		MessageEnd::WatchVideoSSDCallMessage1SendingEnd(Poster WatchVideoSSDCallMessage1)
+		ExecutionEnd::WatchVideoSSDExecution1StartEnd(WatchVideoService WatchVideoSSDExecution1)
+		ExecutionEnd::WatchVideoSSDExecution1FinishEnd(WatchVideoService WatchVideoSSDExecution1)
+		MessageEnd::WatchVideoSSDCallMessage1ReturnReceivingEnd(Poster WatchVideoSSDCallMessage1Return)
+		MessageEnd::WatchVideoSSDCallMessage3SendingEnd(Viewer WatchVideoSSDCallMessage3)
+		ExecutionEnd::WatchVideoSSDExecution2StartEnd(WatchVideoService WatchVideoSSDExecution2)
+		ExecutionEnd::WatchVideoSSDExecution2FinishEnd(WatchVideoService WatchVideoSSDExecution2)
+		MessageEnd::WatchVideoSSDCallMessage3ReturnReceivingEnd(Viewer WatchVideoSSDCallMessage3Return)
+		MessageEnd::WatchVideoSSDCallMessage5SendingEnd(Poster WatchVideoSSDCallMessage5)
+		ExecutionEnd::WatchVideoSSDExecution3StartEnd(WatchVideoService WatchVideoSSDExecution3)
+		ExecutionEnd::WatchVideoSSDExecution3FinishEnd(WatchVideoService WatchVideoSSDExecution3)
+		MessageEnd::WatchVideoSSDCallMessage5ReturnReceivingEnd(Poster WatchVideoSSDCallMessage5Return)
+
+	}
+
+	Interaction LikeVideoSSD {
+
+		[Participants: Viewer Poster LikeVideoService]
+
+		CallMessage::LikeVideoSSDCallMessage1(likeVideo LikeVideoSSDCallMessage1SendingEnd -> LikeVideoSSDExecution1StartEnd)
+		ReturnMessage::LikeVideoSSDCallMessage1Return(LikeVideoSSDExecution1FinishEnd -> LikeVideoSSDCallMessage1ReturnReceivingEnd LikeVideoSSDCallMessage1)
+		CallMessage::LikeVideoSSDCallMessage3(isLiked LikeVideoSSDCallMessage3SendingEnd -> LikeVideoSSDExecution2StartEnd)
+		ReturnMessage::LikeVideoSSDCallMessage3Return(LikeVideoSSDExecution2FinishEnd -> LikeVideoSSDCallMessage3ReturnReceivingEnd LikeVideoSSDCallMessage3)
+
+		Execution::LikeVideoSSDExecution1(LikeVideoService LikeVideoSSDExecution1StartEnd LikeVideoSSDExecution1FinishEnd)
+		Execution::LikeVideoSSDExecution2(LikeVideoService LikeVideoSSDExecution2StartEnd LikeVideoSSDExecution2FinishEnd)
+
+		MessageEnd::LikeVideoSSDCallMessage3SendingEnd(Poster LikeVideoSSDCallMessage3)
+		ExecutionEnd::LikeVideoSSDExecution2StartEnd(LikeVideoService LikeVideoSSDExecution2)
+		ExecutionEnd::LikeVideoSSDExecution2FinishEnd(LikeVideoService LikeVideoSSDExecution2)
+		MessageEnd::LikeVideoSSDCallMessage3ReturnReceivingEnd(Poster LikeVideoSSDCallMessage3Return)
+		MessageEnd::LikeVideoSSDCallMessage1SendingEnd(Poster LikeVideoSSDCallMessage1)
+		ExecutionEnd::LikeVideoSSDExecution1StartEnd(LikeVideoService LikeVideoSSDExecution1)
+		ExecutionEnd::LikeVideoSSDExecution1FinishEnd(LikeVideoService LikeVideoSSDExecution1)
+		MessageEnd::LikeVideoSSDCallMessage1ReturnReceivingEnd(Poster LikeVideoSSDCallMessage1Return)
+
+	}
+
+	Interaction CommentVideoSSD {
+
+		[Participants: Viewer Poster CommentVideoService]
+
+		CallMessage::CommentVideoSSDCallMessage1(commentVideo CommentVideoSSDCallMessage1SendingEnd -> CommentVideoSSDExecution1StartEnd)
+		ReturnMessage::CommentVideoSSDCallMessage1Return(CommentVideoSSDExecution1FinishEnd -> CommentVideoSSDCallMessage1ReturnReceivingEnd CommentVideoSSDCallMessage1)
+
+		Execution::CommentVideoSSDExecution1(CommentVideoService CommentVideoSSDExecution1StartEnd CommentVideoSSDExecution1FinishEnd)
+
+		MessageEnd::CommentVideoSSDCallMessage1SendingEnd(Poster CommentVideoSSDCallMessage1)
+		ExecutionEnd::CommentVideoSSDExecution1StartEnd(CommentVideoService CommentVideoSSDExecution1)
+		ExecutionEnd::CommentVideoSSDExecution1FinishEnd(CommentVideoService CommentVideoSSDExecution1)
+		MessageEnd::CommentVideoSSDCallMessage1ReturnReceivingEnd(Poster CommentVideoSSDCallMessage1Return)
+
+	}
+
+	Interaction ManageVideoSSD {
+
+		[Participants: Poster ManageVideoService]
+
+		CallMessage::ManageVideoSSDCallMessage1(getUserVideo ManageVideoSSDCallMessage1SendingEnd -> ManageVideoSSDExecution1StartEnd)
+		ReturnMessage::ManageVideoSSDCallMessage1Return(ManageVideoSSDExecution1FinishEnd -> ManageVideoSSDCallMessage1ReturnReceivingEnd ManageVideoSSDCallMessage1)
+
+		Execution::ManageVideoSSDExecution1(ManageVideoService ManageVideoSSDExecution1StartEnd ManageVideoSSDExecution1FinishEnd)
+
+		MessageEnd::ManageVideoSSDCallMessage1SendingEnd(Poster ManageVideoSSDCallMessage1)
+		ExecutionEnd::ManageVideoSSDExecution1StartEnd(ManageVideoService ManageVideoSSDExecution1)
+		ExecutionEnd::ManageVideoSSDExecution1FinishEnd(ManageVideoService ManageVideoSSDExecution1)
+		MessageEnd::ManageVideoSSDCallMessage1ReturnReceivingEnd(Poster ManageVideoSSDCallMessage1Return)
+
+	}
+
+	Interaction UploadVideoSSD {
+
+		[Participants: Poster UploadVideoService]
+
+		CallMessage::UploadVideoSSDCallMessage1(uploadVideo UploadVideoSSDCallMessage1SendingEnd -> UploadVideoSSDExecution1StartEnd)
+		ReturnMessage::UploadVideoSSDCallMessage1Return(UploadVideoSSDExecution1FinishEnd -> UploadVideoSSDCallMessage1ReturnReceivingEnd UploadVideoSSDCallMessage1)
+
+		Execution::UploadVideoSSDExecution1(UploadVideoService UploadVideoSSDExecution1StartEnd UploadVideoSSDExecution1FinishEnd)
+
+		MessageEnd::UploadVideoSSDCallMessage1SendingEnd(Poster UploadVideoSSDCallMessage1)
+		ExecutionEnd::UploadVideoSSDExecution1StartEnd(UploadVideoService UploadVideoSSDExecution1)
+		ExecutionEnd::UploadVideoSSDExecution1FinishEnd(UploadVideoService UploadVideoSSDExecution1)
+		MessageEnd::UploadVideoSSDCallMessage1ReturnReceivingEnd(Poster UploadVideoSSDCallMessage1Return)
+
+	}
+
+	Interaction UpdateVideoSSD {
+
+		[Participants: Poster UpdateVideoService]
+
+		CallMessage::UpdateVideoSSDCallMessage1(getVideoInfo UpdateVideoSSDCallMessage1SendingEnd -> UpdateVideoSSDExecution1StartEnd)
+		ReturnMessage::UpdateVideoSSDCallMessage1Return(UpdateVideoSSDExecution1FinishEnd -> UpdateVideoSSDCallMessage1ReturnReceivingEnd UpdateVideoSSDCallMessage1)
+		CallMessage::UpdateVideoSSDCallMessage3(updateVideo UpdateVideoSSDCallMessage3SendingEnd -> UpdateVideoSSDExecution2StartEnd)
+		ReturnMessage::UpdateVideoSSDCallMessage3Return(UpdateVideoSSDExecution2FinishEnd -> UpdateVideoSSDCallMessage3ReturnReceivingEnd UpdateVideoSSDCallMessage3)
+
+		Execution::UpdateVideoSSDExecution1(UpdateVideoService UpdateVideoSSDExecution1StartEnd UpdateVideoSSDExecution1FinishEnd)
+		Execution::UpdateVideoSSDExecution2(UpdateVideoService UpdateVideoSSDExecution2StartEnd UpdateVideoSSDExecution2FinishEnd)
+
+		MessageEnd::UpdateVideoSSDCallMessage1SendingEnd(Poster UpdateVideoSSDCallMessage1)
+		ExecutionEnd::UpdateVideoSSDExecution1StartEnd(UpdateVideoService UpdateVideoSSDExecution1)
+		ExecutionEnd::UpdateVideoSSDExecution1FinishEnd(UpdateVideoService UpdateVideoSSDExecution1)
+		MessageEnd::UpdateVideoSSDCallMessage1ReturnReceivingEnd(Poster UpdateVideoSSDCallMessage1Return)
+		MessageEnd::UpdateVideoSSDCallMessage3SendingEnd(Poster UpdateVideoSSDCallMessage3)
+		ExecutionEnd::UpdateVideoSSDExecution2StartEnd(UpdateVideoService UpdateVideoSSDExecution2)
+		ExecutionEnd::UpdateVideoSSDExecution2FinishEnd(UpdateVideoService UpdateVideoSSDExecution2)
+		MessageEnd::UpdateVideoSSDCallMessage3ReturnReceivingEnd(Poster UpdateVideoSSDCallMessage3Return)
+
+	}
+
+	Service VideoSystem {
+
+	}
+
+	Service ThirdPartyServices {
+
+	}
+
+	Service LoginService {
+
+		[Operation]
+		login(userName, password)
+
+	}
+
+	Service RegisterService {
+
+		[Operation]
+		register(userName, password)
+
+	}
+
+	Service WatchVideoService {
+
+		[Operation]
+		getVideoList()
+//		getVideoList()
+		getLowVideoList()
+		getLikedVideoList(userId)
+
+		[TempProperty]
+		PasswordValidated : Boolean
+		UserId: String
+
+	}
+
+	Service LikeVideoService {
+
+		[Operation]
+		likeVideo(userId, videoId)
+		isLiked(userId, videoId)
+
+	}
+
+	Service CommentVideoService {
+
+		[Operation]
+		commentVideo(userId, videoId, content)
+
+	}
+
+	Service ManageVideoService {
+
+		[Operation]
+		getUserVideo(userId)
+
+	}
+
+	Service UploadVideoService {
+
+		[Operation]
+		uploadVideo(userId, content)
+
+	}
+
+	Service UpdateVideoService {
+
+		[Operation]
+		getVideoInfo(videoId)
+		updateVideo(content, videoId)
+
+	}
+
+	Contract CommentVideoService::commentVideo(userId:String, videoId:String, content:String): Boolean {
+
+		precondition:
+			true
+
+		postcondition:
+			result = true
+
+	}
+
+	Contract LikeVideoService::isLiked(userId:String, videoId:String): Boolean {
+
+		precondition:
+			true
+
+		postcondition:
+			result = true
+	}
+
+	Contract LikeVideoService::likeVideo(userId:String, videoId:String): Boolean {
+
+		precondition:
+			true
+
+		postcondition:
+			result = true
+	}
+
+	Contract LoginService::login(userName:String, password:String): Boolean {
+
+		precondition:
+			true
+
+		postcondition:
+			result = true
+	}
+
+	Contract ManageVideoService::getUserVideo(userId:String): Boolean {
+
+		precondition:
+			true
+
+		postcondition:
+			result = true
+	}
+
+	Contract RegisterService::register(userName:String, password:String): Boolean {
+
+		precondition:
+			true
+
+		postcondition:
+			result = true
+	}
+
+	Contract UpdateVideoService::getVideoInfo(videoId:String): Boolean {
+
+		precondition:
+			true
+
+		postcondition:
+			result = true
+	}
+
+	Contract UpdateVideoService::updateVideo(content:String, videoId:String): Boolean {
+
+		precondition:
+			true
+
+		postcondition:
+			result = true
+	}
+
+	Contract UploadVideoService::uploadVideo(userId:String, content:String): Boolean {
+
+		definition:
+			watchVideo:WatchVideo
+
+		precondition:
+			true
+
+		postcondition:
+			watchVideo.UserId -> userId
+			result = true
+	}
+
+	Contract WatchVideoService::getVideoList(): Real {
+
+		precondition:
+			self.PasswordValidated = true
+
+		postcondition:
+			result = WatchVideo
+	}
+
+	Contract WatchVideoService::getLowVideoList(): Real {
+
+		precondition:
+			true
+
+		postcondition:
+			result = WatchVideo
+	}
+
+	Contract WatchVideoService::getLikedVideoList(userId:String): Real {
+
+		precondition:
+			self.PasswordValidated = true
+
+		postcondition:
+			result = WatchVideo
+	}
+
+}
+
+DomainModel Video {
+
+	@AutoCRUD
+	Entity User {
+		UserId : Integer
+
+		[Refer]
+		Usertocomponent : VideoComponent Association
+	}
+
+	@AutoCRUD
+	Entity WatchVideo {
+		VideoId : String
+		VideoContent : String
+
+		[Refer]
+		VideotoUploadVideo : UploadVideo Association
+		VideotoUpdateVideo : UpdateVideo Association
+	}
+
+	@AutoCRUD
+	Entity CommentVideo {
+		CommentId : String
+		Content : String
+		VideoId : String
+		UserId : String
+	}
+
+	@AutoCRUD
+	Entity VideoComponent {
+		[Refer]
+		ComponenttoVideo : WatchVideo Association
+		ComponenttoComment : CommentVideo Association
+		Componenttolike : LikeVideo Association
+	}
+
+	@AutoCRUD
+	Entity LikeVideo {
+		UserId : String
+		VideoId : String
+	}
+
+	Entity Viewer extends User {
+	}
+
+	@AutoCRUD
+	Entity Poster extends User {
+		UserName : String
+		Password : String
+	}
+
+	@AutoCRUD
+	Entity UploadVideo {
+		VideoInfo : String
+	}
+
+	@AutoCRUD
+	Entity UpdateVideo {
+		VideoInfo : String
+	}
+
+}
+
