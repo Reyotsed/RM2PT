@@ -4,7 +4,7 @@
     <semanticResources>video.remodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_aIC_oA9vEfCODa4mUqDWig">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_aJuaoA9vEfCODa4mUqDWig" name="video Conceptual Class Diagram" repPath="#_aJX1UA9vEfCODa4mUqDWig" changeId="eaa26476-e7dc-41db-b3bf-dce69bf6c004">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_aJuaoA9vEfCODa4mUqDWig" name="video Conceptual Class Diagram" repPath="#_aJX1UA9vEfCODa4mUqDWig" changeId="f56072bf-37fa-4d8c-80f3-52e8b517364f">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']"/>
         <target xmi:type="rEMODEL:DomainModel" href="video.remodel#//@DomainModel"/>
       </ownedRepresentationDescriptors>
@@ -52,10 +52,6 @@
         <children xmi:type="notation:Node" xmi:id="_eQaRfA9xEfCODa4mUqDWig" type="2003" element="_eQZDIA9xEfCODa4mUqDWig">
           <children xmi:type="notation:Node" xmi:id="_eQaRfw9xEfCODa4mUqDWig" type="5007"/>
           <children xmi:type="notation:Node" xmi:id="_eQaRgA9xEfCODa4mUqDWig" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_52D7MC1YEfCyMOx5CpZP3w" type="3010" element="_51tV4C1YEfCyMOx5CpZP3w">
-              <styles xmi:type="notation:FontStyle" xmi:id="_52D7MS1YEfCyMOx5CpZP3w" fontName="Microsoft YaHei UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_52D7Mi1YEfCyMOx5CpZP3w"/>
-            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_eQaRgQ9xEfCODa4mUqDWig"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_eQaRgg9xEfCODa4mUqDWig"/>
           </children>
@@ -149,6 +145,10 @@
             <children xmi:type="notation:Node" xmi:id="_doHa0A90EfCODa4mUqDWig" type="3010" element="_doB7QA90EfCODa4mUqDWig">
               <styles xmi:type="notation:FontStyle" xmi:id="_doHa0Q90EfCODa4mUqDWig" fontName="Microsoft YaHei UI" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_doHa0g90EfCODa4mUqDWig"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_5It0sC5jEfCWHM0Ajy2s1Q" type="3010" element="_5IAqES5jEfCWHM0Ajy2s1Q">
+              <styles xmi:type="notation:FontStyle" xmi:id="_5It0sS5jEfCWHM0Ajy2s1Q" fontName="Microsoft YaHei UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_5It0si5jEfCWHM0Ajy2s1Q"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_VD5Mrw9zEfCODa4mUqDWig"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_VD5MsA9zEfCODa4mUqDWig"/>
@@ -327,14 +327,6 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_51tV4C1YEfCyMOx5CpZP3w" name="UserId : Integer">
-        <target xmi:type="rEMODEL:Attribute" href="video.remodel#//@DomainModel/@entity.0/@attributes.0"/>
-        <semanticElements xmi:type="rEMODEL:Attribute" href="video.remodel#//@DomainModel/@entity.0/@attributes.0"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_51vLEC1YEfCyMOx5CpZP3w" showIcon="false" labelAlignment="LEFT" labelPosition="node" height="20">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']/@subNodeMappings[name='EntityAttribute']/@conditionnalStyles.0/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']/@subNodeMappings[name='EntityAttribute']"/>
-      </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_j2FgUA9xEfCODa4mUqDWig" name="WatchVideo" outgoingEdges="_PkKX-A90EfCODa4mUqDWig _QcyCAg90EfCODa4mUqDWig" incomingEdges="_L9mg5g90EfCODa4mUqDWig" width="10">
       <target xmi:type="rEMODEL:Entity" href="video.remodel#//@DomainModel/@entity.1"/>
@@ -471,7 +463,7 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_x0r3QA9zEfCODa4mUqDWig" name="UserName : String">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_x0r3QA9zEfCODa4mUqDWig" name="UserId : String">
         <target xmi:type="rEMODEL:Attribute" href="video.remodel#//@DomainModel/@entity.6/@attributes.0"/>
         <semanticElements xmi:type="rEMODEL:Attribute" href="video.remodel#//@DomainModel/@entity.6/@attributes.0"/>
         <ownedStyle xmi:type="diagram:Square" uid="_x0r3QQ9zEfCODa4mUqDWig" showIcon="false" labelAlignment="LEFT" labelPosition="node" height="20">
@@ -479,10 +471,18 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']/@subNodeMappings[name='EntityAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_doB7QA90EfCODa4mUqDWig" name="Password : String">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_doB7QA90EfCODa4mUqDWig" name="UserName : String">
         <target xmi:type="rEMODEL:Attribute" href="video.remodel#//@DomainModel/@entity.6/@attributes.1"/>
         <semanticElements xmi:type="rEMODEL:Attribute" href="video.remodel#//@DomainModel/@entity.6/@attributes.1"/>
         <ownedStyle xmi:type="diagram:Square" uid="_doB7QQ90EfCODa4mUqDWig" showIcon="false" labelAlignment="LEFT" labelPosition="node" height="20">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']/@subNodeMappings[name='EntityAttribute']/@conditionnalStyles.0/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']/@subNodeMappings[name='EntityAttribute']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_5IAqES5jEfCWHM0Ajy2s1Q" name="Password : String">
+        <target xmi:type="rEMODEL:Attribute" href="video.remodel#//@DomainModel/@entity.6/@attributes.2"/>
+        <semanticElements xmi:type="rEMODEL:Attribute" href="video.remodel#//@DomainModel/@entity.6/@attributes.2"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_5IDGUC5jEfCWHM0Ajy2s1Q" showIcon="false" labelAlignment="LEFT" labelPosition="node" height="20">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']/@subNodeMappings[name='EntityAttribute']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Conceptual%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Entity']/@subNodeMappings[name='EntityAttribute']"/>

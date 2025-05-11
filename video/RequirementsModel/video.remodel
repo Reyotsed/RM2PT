@@ -205,10 +205,6 @@ UseCaseModel Video {
 		getLowVideoList()
 		getLikedVideoList(userId)
 
-		[TempProperty]
-		PasswordValidated : Boolean
-		UserId: String
-
 	}
 
 	Service LikeVideoService {
@@ -323,25 +319,17 @@ UseCaseModel Video {
 
 	Contract UploadVideoService::uploadVideo(userId:String, content:String): Boolean {
 
-		definition:
-			watchVideo:WatchVideo
-
 		precondition:
 			true
 
 		postcondition:
-			watchVideo.VideoId = userId and
-			watchVideo.VideoContent = content and
 			result = true
 	}
 
 	Contract WatchVideoService::getVideoList(): Boolean {
 
-		definition:
-			watchVideo:WatchVideo
-
 		precondition:
-			self.PasswordValidated = true
+			true
 
 		postcondition:
 			result = true
@@ -349,8 +337,14 @@ UseCaseModel Video {
 
 	Contract WatchVideoService::getLowVideoList(): Boolean {
 
-		definition:
-			watchVideo:WatchVideo
+		precondition:
+			true
+
+		postcondition:
+			result = true
+	}
+
+	Contract WatchVideoService::getLikedVideoList(userId:String): Boolean {
 
 		precondition:
 			true
@@ -359,31 +353,15 @@ UseCaseModel Video {
 			result = true
 	}
 
-	Contract WatchVideoService::getLikedVideoList(userId:String): WatchVideo {
-
-		definition:
-			watchVideo:WatchVideo = WatchVideo.allInstance()->any(watchVideo:WatchVideo | watchVideo.VideoId = userId)
-
-		precondition:
-			true
-
-		postcondition:
-			result = watchVideo
-	}
-
 }
 
 DomainModel Video {
 
-	@AutoCRUD
 	Entity User {
-		UserId : Integer
-
 		[Refer]
 		Usertocomponent : VideoComponent Association
 	}
 
-	@AutoCRUD
 	Entity WatchVideo {
 		VideoId : String
 		VideoContent : String
@@ -393,7 +371,6 @@ DomainModel Video {
 		VideotoUpdateVideo : UpdateVideo Association
 	}
 
-	@AutoCRUD
 	Entity CommentVideo {
 		CommentId : String
 		Content : String
@@ -401,7 +378,6 @@ DomainModel Video {
 		UserId : String
 	}
 
-	@AutoCRUD
 	Entity VideoComponent {
 		[Refer]
 		ComponenttoVideo : WatchVideo Association
@@ -409,7 +385,6 @@ DomainModel Video {
 		Componenttolike : LikeVideo Association
 	}
 
-	@AutoCRUD
 	Entity LikeVideo {
 		UserId : String
 		VideoId : String
@@ -418,18 +393,16 @@ DomainModel Video {
 	Entity Viewer extends User {
 	}
 
-	@AutoCRUD
 	Entity Poster extends User {
+		UserId : String
 		UserName : String
 		Password : String
 	}
 
-	@AutoCRUD
 	Entity UploadVideo {
 		VideoInfo : String
 	}
 
-	@AutoCRUD
 	Entity UpdateVideo {
 		VideoInfo : String
 	}

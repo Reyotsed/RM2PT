@@ -12,12 +12,20 @@ import java.lang.reflect.Method;
 public class Poster extends User  implements Serializable {
 	
 	/* all primary attributes */
+	private String UserId;
 	private String UserName;
 	private String Password;
 	
 	/* all references */
 	
 	/* all get and set functions */
+	public String getUserId() {
+		return UserId;
+	}	
+	
+	public void setUserId(String userid) {
+		this.UserId = userid;
+	}
 	public String getUserName() {
 		return UserName;
 	}	

@@ -1039,15 +1039,6 @@ public class PrototypeController implements Initializable {
 		//super entity attribute column
 						
 		//attributes table column
-		TableColumn<Map<String, String>, String> tableUser_UserId = new TableColumn<Map<String, String>, String>("UserId");
-		tableUser_UserId.setMinWidth("UserId".length()*10);
-		tableUser_UserId.setCellValueFactory(new Callback<CellDataFeatures<Map<String, String>, String>, ObservableValue<String>>() {	   
-			@Override
-		    public ObservableValue<String> call(CellDataFeatures<Map<String, String>, String> data) {
-		        return new ReadOnlyStringWrapper(data.getValue().get("UserId"));
-		    }
-		});	
-		tableUser.getColumns().add(tableUser_UserId);
 		
 		//table data
 		ObservableList<Map<String, String>> dataUser = FXCollections.observableArrayList();
@@ -1056,7 +1047,6 @@ public class PrototypeController implements Initializable {
 			//table entry
 			Map<String, String> unit = new HashMap<String, String>();
 			
-			unit.put("UserId", String.valueOf(r.getUserId()));
 
 			dataUser.add(unit);
 		}
@@ -1311,15 +1301,6 @@ public class PrototypeController implements Initializable {
 		TableView<Map<String, String>> tableViewer = new TableView<Map<String, String>>();
 
 		//super entity attribute column
-		TableColumn<Map<String, String>, String> tableViewer_UserId = new TableColumn<Map<String, String>, String>("UserId");
-		tableViewer_UserId.setMinWidth("UserId".length()*10);
-		tableViewer_UserId.setCellValueFactory(new Callback<CellDataFeatures<Map<String, String>, String>, ObservableValue<String>>() {	   
-			@Override
-		    public ObservableValue<String> call(CellDataFeatures<Map<String, String>, String> data) {
-		        return new ReadOnlyStringWrapper(data.getValue().get("UserId"));
-		    }
-		});	
-		tableViewer.getColumns().add(tableViewer_UserId);
 						
 		//attributes table column
 		
@@ -1329,7 +1310,6 @@ public class PrototypeController implements Initializable {
 		for (Viewer r : rsViewer) {
 			//table entry
 			Map<String, String> unit = new HashMap<String, String>();
-			unit.put("UserId", String.valueOf(r.getUserId()));
 			
 
 			dataViewer.add(unit);
@@ -1353,6 +1333,8 @@ public class PrototypeController implements Initializable {
 		TableView<Map<String, String>> tablePoster = new TableView<Map<String, String>>();
 
 		//super entity attribute column
+						
+		//attributes table column
 		TableColumn<Map<String, String>, String> tablePoster_UserId = new TableColumn<Map<String, String>, String>("UserId");
 		tablePoster_UserId.setMinWidth("UserId".length()*10);
 		tablePoster_UserId.setCellValueFactory(new Callback<CellDataFeatures<Map<String, String>, String>, ObservableValue<String>>() {	   
@@ -1362,8 +1344,6 @@ public class PrototypeController implements Initializable {
 		    }
 		});	
 		tablePoster.getColumns().add(tablePoster_UserId);
-						
-		//attributes table column
 		TableColumn<Map<String, String>, String> tablePoster_UserName = new TableColumn<Map<String, String>, String>("UserName");
 		tablePoster_UserName.setMinWidth("UserName".length()*10);
 		tablePoster_UserName.setCellValueFactory(new Callback<CellDataFeatures<Map<String, String>, String>, ObservableValue<String>>() {	   
@@ -1389,8 +1369,11 @@ public class PrototypeController implements Initializable {
 		for (Poster r : rsPoster) {
 			//table entry
 			Map<String, String> unit = new HashMap<String, String>();
-			unit.put("UserId", String.valueOf(r.getUserId()));
 			
+			if (r.getUserId() != null)
+				unit.put("UserId", String.valueOf(r.getUserId()));
+			else
+				unit.put("UserId", "");
 			if (r.getUserName() != null)
 				unit.put("UserName", String.valueOf(r.getUserName()));
 			else
@@ -1521,7 +1504,6 @@ public class PrototypeController implements Initializable {
 				Map<String, String> unit = new HashMap<String, String>();
 				
 				
-				unit.put("UserId", String.valueOf(r.getUserId()));
 				dataUser.add(unit);
 			}
 			
@@ -1608,7 +1590,6 @@ public class PrototypeController implements Initializable {
 			for (Viewer r : rsViewer) {
 				Map<String, String> unit = new HashMap<String, String>();
 				
-				unit.put("UserId", String.valueOf(r.getUserId()));
 				
 				dataViewer.add(unit);
 			}
@@ -1620,8 +1601,11 @@ public class PrototypeController implements Initializable {
 			for (Poster r : rsPoster) {
 				Map<String, String> unit = new HashMap<String, String>();
 				
-				unit.put("UserId", String.valueOf(r.getUserId()));
 				
+				if (r.getUserId() != null)
+					unit.put("UserId", String.valueOf(r.getUserId()));
+				else
+					unit.put("UserId", "");
 				if (r.getUserName() != null)
 					unit.put("UserName", String.valueOf(r.getUserName()));
 				else
@@ -1676,7 +1660,6 @@ public class PrototypeController implements Initializable {
 				Map<String, String> unit = new HashMap<String, String>();
 
 
-				unit.put("UserId", String.valueOf(r.getUserId()));
 				dataUser.add(unit);
 			}
 			
@@ -1768,7 +1751,6 @@ public class PrototypeController implements Initializable {
 			for (Viewer r : rsViewer) {
 				Map<String, String> unit = new HashMap<String, String>();
 
-				unit.put("UserId", String.valueOf(r.getUserId()));
 
 				dataViewer.add(unit);
 			}
@@ -1781,8 +1763,11 @@ public class PrototypeController implements Initializable {
 			for (Poster r : rsPoster) {
 				Map<String, String> unit = new HashMap<String, String>();
 
-				unit.put("UserId", String.valueOf(r.getUserId()));
 
+				if (r.getUserId() != null)
+					unit.put("UserId", String.valueOf(r.getUserId()));
+				else
+					unit.put("UserId", "");
 				if (r.getUserName() != null)
 					unit.put("UserName", String.valueOf(r.getUserName()));
 				else
@@ -2021,7 +2006,7 @@ public class PrototypeController implements Initializable {
 		preconditions_map.put("uploadVideo", "true");
 		preconditions_map.put("getVideoList", "true");
 		preconditions_map.put("getLowVideoList", "true");
-		preconditions_map.put("getLikedVideoList", "self.PasswordValidated = true");
+		preconditions_map.put("getLikedVideoList", "true");
 		
 		//postcondition map
 		postconditions_map = new HashMap<String, String>();
@@ -2035,8 +2020,8 @@ public class PrototypeController implements Initializable {
 		postconditions_map.put("updateVideo", "result = true");
 		postconditions_map.put("uploadVideo", "result = true");
 		postconditions_map.put("getVideoList", "result = true");
-		postconditions_map.put("getLowVideoList", "result = WatchVideo");
-		postconditions_map.put("getLikedVideoList", "result = WatchVideo");
+		postconditions_map.put("getLowVideoList", "result = true");
+		postconditions_map.put("getLikedVideoList", "result = true");
 		
 		//service invariants map
 		service_invariants_map = new LinkedHashMap<String, String>();
@@ -2336,74 +2321,10 @@ public class PrototypeController implements Initializable {
 
 		TreeItem<String> treeRootadministrator = new TreeItem<String>("Root node");
 		
-		TreeItem<String> subTreeRoot_User = new TreeItem<String>("manageUser");
-					 		subTreeRoot_User.getChildren().addAll(Arrays.asList(					 		
-					 			 		new TreeItem<String>("createUser"),
-					 			 		new TreeItem<String>("queryUser"),
-					 			 		new TreeItem<String>("modifyUser"),
-					 			 		new TreeItem<String>("deleteUser")					 			 	
-					 			 	));							 		
-		TreeItem<String> subTreeRoot_WatchVideo = new TreeItem<String>("manageWatchVideo");
-					 		subTreeRoot_WatchVideo.getChildren().addAll(Arrays.asList(					 		
-					 			 		new TreeItem<String>("createWatchVideo"),
-					 			 		new TreeItem<String>("queryWatchVideo"),
-					 			 		new TreeItem<String>("modifyWatchVideo"),
-					 			 		new TreeItem<String>("deleteWatchVideo")					 			 	
-					 			 	));							 		
-		TreeItem<String> subTreeRoot_CommentVideo = new TreeItem<String>("manageCommentVideo");
-					 		subTreeRoot_CommentVideo.getChildren().addAll(Arrays.asList(					 		
-					 			 		new TreeItem<String>("createCommentVideo"),
-					 			 		new TreeItem<String>("queryCommentVideo"),
-					 			 		new TreeItem<String>("modifyCommentVideo"),
-					 			 		new TreeItem<String>("deleteCommentVideo")					 			 	
-					 			 	));							 		
-		TreeItem<String> subTreeRoot_VideoComponent = new TreeItem<String>("manageVideoComponent");
-					 		subTreeRoot_VideoComponent.getChildren().addAll(Arrays.asList(					 		
-					 			 		new TreeItem<String>("createVideoComponent"),
-					 			 		new TreeItem<String>("queryVideoComponent"),
-					 			 		new TreeItem<String>("modifyVideoComponent"),
-					 			 		new TreeItem<String>("deleteVideoComponent")					 			 	
-					 			 	));							 		
-		TreeItem<String> subTreeRoot_LikeVideo = new TreeItem<String>("manageLikeVideo");
-					 		subTreeRoot_LikeVideo.getChildren().addAll(Arrays.asList(					 		
-					 			 		new TreeItem<String>("createLikeVideo"),
-					 			 		new TreeItem<String>("queryLikeVideo"),
-					 			 		new TreeItem<String>("modifyLikeVideo"),
-					 			 		new TreeItem<String>("deleteLikeVideo")					 			 	
-					 			 	));							 		
-		TreeItem<String> subTreeRoot_Poster = new TreeItem<String>("managePoster");
-					 		subTreeRoot_Poster.getChildren().addAll(Arrays.asList(					 		
-					 			 		new TreeItem<String>("createPoster"),
-					 			 		new TreeItem<String>("queryPoster"),
-					 			 		new TreeItem<String>("modifyPoster"),
-					 			 		new TreeItem<String>("deletePoster")					 			 	
-					 			 	));							 		
-		TreeItem<String> subTreeRoot_UploadVideo = new TreeItem<String>("manageUploadVideo");
-					 		subTreeRoot_UploadVideo.getChildren().addAll(Arrays.asList(					 		
-					 			 		new TreeItem<String>("createUploadVideo"),
-					 			 		new TreeItem<String>("queryUploadVideo"),
-					 			 		new TreeItem<String>("modifyUploadVideo"),
-					 			 		new TreeItem<String>("deleteUploadVideo")					 			 	
-					 			 	));							 		
-		TreeItem<String> subTreeRoot_UpdateVideo = new TreeItem<String>("manageUpdateVideo");
-					 		subTreeRoot_UpdateVideo.getChildren().addAll(Arrays.asList(					 		
-					 			 		new TreeItem<String>("createUpdateVideo"),
-					 			 		new TreeItem<String>("queryUpdateVideo"),
-					 			 		new TreeItem<String>("modifyUpdateVideo"),
-					 			 		new TreeItem<String>("deleteUpdateVideo")					 			 	
-					 			 	));							 		
 		
 					 			
 						 		
 		treeRootadministrator.getChildren().addAll(Arrays.asList(
-		 	subTreeRoot_User,
-		 	subTreeRoot_WatchVideo,
-		 	subTreeRoot_CommentVideo,
-		 	subTreeRoot_VideoComponent,
-		 	subTreeRoot_LikeVideo,
-		 	subTreeRoot_Poster,
-		 	subTreeRoot_UploadVideo,
-		 	subTreeRoot_UpdateVideo
 				));	
 				
 	 			treeRootadministrator.setExpanded(true);

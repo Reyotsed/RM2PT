@@ -12,19 +12,11 @@ import java.lang.reflect.Method;
 public class User implements Serializable {
 	
 	/* all primary attributes */
-	private int UserId;
 	
 	/* all references */
 	private VideoComponent Usertocomponent; 
 	
 	/* all get and set functions */
-	public int getUserId() {
-		return UserId;
-	}	
-	
-	public void setUserId(int userid) {
-		this.UserId = userid;
-	}
 	
 	/* all functions for reference*/
 	public VideoComponent getUsertocomponent() {
